@@ -15,7 +15,7 @@
 
 Route::group([
 
-    'middleware' => 'auth'
+    'middleware' => ['web', 'auth']
 
 ], function () {
 

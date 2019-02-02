@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * The project that belong to the user.
+     */
+    public function project()
+    {
+        return $this->hasMany('Modules\Project\Http\Repositories\ProjectRepository');
+    }
+
+     /**
+     * The task that belong to the user.
+     */
+    public function task()
+    {
+        return $this->hasMany('Modules\Project\Http\Repositories\TasksRepository');
+    }
 }

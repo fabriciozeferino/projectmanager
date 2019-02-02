@@ -5,9 +5,6 @@ namespace Modules\Project\Http\Services;
 use Modules\Project\Http\Repositories\ProjectRepository;
 
 
-
-
-
 class ProjectService extends AbstractService
 {
     public $repository;
@@ -18,12 +15,12 @@ class ProjectService extends AbstractService
     {
         $this->repository = $repository;
 
-        $this->user = auth()->user();
+        $this->user = auth();
     }
 
     public function index()
     {
-        $user_id = $this->user->id;
+        $user_id = $this->user->id();
 
         $project = $this->repository->index($user_id);
 
