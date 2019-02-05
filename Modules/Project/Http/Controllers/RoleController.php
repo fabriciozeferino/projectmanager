@@ -2,26 +2,25 @@
 
 namespace Modules\Project\Http\Controllers;
 
-use Modules\Project\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Modules\Project\Http\Services\RoleService;
+use Illuminate\Routing\Controller;
 
-use Modules\Project\Http\Services\TaskService;
-
-use Modules\Project\Http\Requests\CreateTaskRequest;
-use Modules\Project\Http\Requests\UpdateTaskRequest;
-use Modules\Project\Http\Requests\DeleteTaslRquest;
-
-class TaskController extends Controller
+class RoleController extends Controller
 {
     public $service;
 
-    public function __construct(TaskService $service)
+    public function __construct(RoleService $service)
     {
         $this->service = $service;
     }
 
-    public function index($id)
+    public function index()
     {
-        return $this->service->index($id);
+        $service = $this->service->index();
+
+        return view('project::role', compact('service'));
     }
 
     public function show($id)
@@ -43,5 +42,4 @@ class TaskController extends Controller
     {
         return $this->service->update($request->all());
     }
-
 }

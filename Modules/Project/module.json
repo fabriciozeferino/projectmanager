@@ -6,7 +6,8 @@
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\Project\\Providers\\ProjectServiceProvider"
+        "Modules\\Project\\Providers\\ProjectServiceProvider",
+        "Modules\\Project\\Providers\\PermissionsServiceProvider"
     ],
     "aliases": {},
     "files": [],

@@ -36,11 +36,60 @@ class User extends Authenticatable
         return $this->hasMany('Modules\Project\Http\Repositories\ProjectRepository');
     }
 
-     /**
+    /**
      * The task that belong to the user.
      */
     public function task()
     {
         return $this->hasMany('Modules\Project\Http\Repositories\TasksRepository');
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Modules\Project\Http\Repositories\RoleRepository', 'role_user', 'user_id', 'role_id');
+    }
+
+    /**
+     * The permissions that belong to the user.
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany('Modules\Project\Http\Repositories\PermissionRepository', 'permission_user', 'user_id', 'permission_id');
+    }
+
+    /**
+     * Check if User has Role
+     */
+    public function hasRole(...$roles)
+    {
+        foreach ($roles as $role) {
+            if ($this->roles->contains('slug', $role)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasPermissionTo($permission)
+    {
+        return $this->hasPermission($permission);
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->where('slug', $permission->slug)->count();
+    }
+
+    public function hasPermissionThroughRole($permission)
+    {
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

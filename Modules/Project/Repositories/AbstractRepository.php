@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 abstract class AbstractRepository extends Model //implements RepositoryInterface
 {
-   
+    public function index()
+    {
+        return $this->all();
+    }
 
     // Create a new record in the database
     public function store(array $data)

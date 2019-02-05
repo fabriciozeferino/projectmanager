@@ -43,6 +43,18 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Admin Links -->
+                        @role('admin')
+                        <li class="nav-item">
+                            <a href="{{ asset('/user') }}" class="nav-link">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ asset('/role') }}" class="nav-link">Roles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ asset('/permission') }}" class="nav-link">Permissions</a>
+                        </li>
+                        @endrole
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -78,7 +90,10 @@
         </nav>
 
         <main class="py-4 mt-5">
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    @yield('content')
+                </div>
         </main>
     </div>
 </body>

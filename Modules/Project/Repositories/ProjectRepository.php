@@ -35,13 +35,14 @@ class ProjectRepository extends AbstractRepository
     /**
      * The projects that belong to the user.
      */
-    public function invites()
-    {
-        return $this->belongsToMany(\App\User::class, 'project_user', 'project_id', 'user_id');
-    }
+    // public function invites()
+    // {
+    //     return $this->belongsToMany(\App\User::class, 'project_user', 'project_id', 'user_id');
+    // }
 
-    public function index($id)
+    public function index()
     {
+        $id = 1;
         return $this
             ->where($this->table . '.user_id', $id)
             ->orWhere('project_user.read', true)

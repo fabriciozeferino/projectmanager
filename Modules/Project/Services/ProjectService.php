@@ -14,8 +14,6 @@ class ProjectService extends AbstractService
     public function __construct(ProjectRepository $repository)
     {
         $this->repository = $repository;
-
-        $this->user = auth();
     }
 
     public function index()

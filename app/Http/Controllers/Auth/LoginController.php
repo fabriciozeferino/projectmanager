@@ -47,9 +47,11 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        session()->push('user', $user->project);
+        session()->push('user', $user);
 
-        return session()->all();
+        session()->save();
+
+        //return session()->all();
     }
 
 }

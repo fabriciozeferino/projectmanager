@@ -32,14 +32,4 @@ class TaskRepository extends AbstractRepository
         return $this->belongsTo(ProjectRepository::class, 'project_id', 'id');
     }
 
-     // Get all registers
-    public function index($id, $project_id = null)
-    {
-        return $this
-            ->where($this->table . '.user_id', $id)
-            ->where($this->table . '.project_id', $project_id)
-
-             //->get();
-            ->paginate(2);
-    }
 }

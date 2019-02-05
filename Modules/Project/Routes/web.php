@@ -19,6 +19,10 @@ Route::group([
 
 ], function () {
 
+    Route::get('/home', function () {
+        return redirect('project');
+    });
+
     Route::get('project', 'ProjectController@index');
     Route::get('project/{project}', 'ProjectController@show');
     Route::post('project', 'ProjectController@store');
@@ -30,6 +34,24 @@ Route::group([
     Route::post('project/{project}/task', 'TaskController@store');
     Route::put('project/{project}/task/{task}', 'TaskController@update');
     Route::delete('project/{project}/task/{task}', 'TaskController@delete');
+
+    Route::get('role', 'RoleController@index');
+    Route::get('role/{role}', 'RoleController@show');
+    Route::post('role', 'RoleController@store');
+    Route::put('role/{role}', 'RoleController@update');
+    Route::delete('role/{role}', 'RoleController@delete');
+
+    Route::get('permission', 'PermissionController@index');
+    Route::get('permission/{permission}', 'PermissionController@show');
+    Route::post('permission', 'PermissionController@store');
+    Route::put('permission/{permission}', 'PermissionController@update');
+    Route::delete('permission/{permission}', 'PermissionController@delete');
+
+    Route::get('user', 'UserController@index');
+    Route::get('user/{user}', 'UserController@show');
+    Route::post('user', 'UserController@store');
+    Route::put('user/{user}', 'UserController@update');
+    Route::delete('user/{user}', 'UserController@delete');
 });
 
 

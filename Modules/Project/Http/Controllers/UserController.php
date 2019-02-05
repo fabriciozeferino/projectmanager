@@ -4,29 +4,31 @@ namespace Modules\Project\Http\Controllers;
 
 use Modules\Project\Http\Controllers\Controller;
 
-use Modules\Project\Http\Services\TaskService;
+use Modules\Project\Http\Services\UserService;
 
 use Modules\Project\Http\Requests\CreateTaskRequest;
 use Modules\Project\Http\Requests\UpdateTaskRequest;
 use Modules\Project\Http\Requests\DeleteTaslRquest;
 
-class TaskController extends Controller
+class UserController extends Controller
 {
     public $service;
 
-    public function __construct(TaskService $service)
+    public function __construct(UserService $service)
     {
         $this->service = $service;
     }
 
-    public function index($id)
+    public function index()
     {
-        return $this->service->index($id);
+        $service = $this->service->index();
+
+        return view('project::user', compact('service'));
     }
 
     public function show($id)
     {
-        $this->service->show($id);
+        return $this->service->show($id);
     }
 
     public function store(CreateTaskRequest $request)

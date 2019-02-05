@@ -7,6 +7,12 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
+
+                        @role('admin')
+
+                        <h1>Hello from the admin</h1>
+                        
+                        @endrole
                     
                         {{-- {{ session('user') }} --}}
                     {{-- @if (session('status'))
