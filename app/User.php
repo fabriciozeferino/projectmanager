@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\Project\Http\Repositories\HasPermissionsTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasPermissionsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -60,36 +61,4 @@ class User extends Authenticatable
         return $this->belongsToMany('Modules\Project\Http\Repositories\PermissionRepository', 'permission_user', 'user_id', 'permission_id');
     }
 
-    /**
-     * Check if User has Role
-     */
-    public function hasRole(...$roles)
-    {
-        foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function hasPermissionTo($permission)
-    {
-        return $this->hasPermission($permission);
-    }
-
-    public function hasPermission($permission)
-    {
-        return $this->permissions->where('slug', $permission->slug)->count();
-    }
-
-    public function hasPermissionThroughRole($permission)
-    {
-        foreach ($permission->roles as $role) {
-            if ($this->roles->contains($role)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

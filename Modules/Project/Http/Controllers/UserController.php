@@ -47,3 +47,12 @@ class UserController extends Controller
     }
 
 }
+
+
+        //dump($user->hasRole('developer')); //will return true, if user has role
+
+        //dump($user->roles);
+       
+        //dump($user->givePermissionsTo('create-tasks')); // will return permission, if not null
+        //dump($user->hasPermissionTo('create-tasks')); // will return true, if user has permission
+        //dump($user->can('edit-users'));

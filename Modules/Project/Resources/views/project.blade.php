@@ -2,12 +2,6 @@
 @section('content')
 
 
-<div class="col-md-4">
-        @include('project::profile')
-</div>
-
-
-<div class="col-md-8">
     <div class="card">
         <div class="card-header">Projects</div>
         <div class="card-body">
@@ -37,5 +31,4 @@
 
         </div>
     </div>
-</div>
-@endsection
+    @stop

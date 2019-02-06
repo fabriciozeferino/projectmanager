@@ -91,10 +91,22 @@
 
         <main class="py-4 mt-5">
             <div class="container">
-                <div class="row justify-content-center">
-                    @yield('content')
+                <div class="row">
+                    
+                    @auth
+                        <div class="col-md-4">
+                            @include('project::profile')
+                        </div>
+                    @endauth
+                    
+                    <div class="col-md-8">
+                        @yield('content')
+                    <div class="col-md-8">
+                        
                 </div>
+            </div>
         </main>
+
     </div>
 </body>
 

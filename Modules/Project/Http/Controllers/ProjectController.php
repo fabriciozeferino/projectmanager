@@ -9,7 +9,6 @@ use Modules\Project\Http\Services\ProjectService;
 use Modules\Project\Http\Requests\CreateProjectRequest;
 use Modules\Project\Http\Requests\UpdateProjectRequest;
 use Modules\Project\Http\Requests\DeleteProjectRequest;
-use App\User;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\View;
 
@@ -30,19 +29,10 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
+        $user = auth()->user();
+
 
         return view('project::project', compact('user'));
-
-        return View::make('package::view.login');
-
-
-        //dump($user->roles);
-        //dump($user->hasRole('developer')); //will return true, if user has role
-        //dd($user->givePermissionsTo('create-tasks')); // will return permission, if not null
-        dump($user->can('create-tasks')); // will return true, if user has permission
-        dd($user->can('edit-users'));
-        return 'a';// $this->service->index();
     }
 
     public function show($project_id)
