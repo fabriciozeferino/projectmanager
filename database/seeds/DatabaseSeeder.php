@@ -17,32 +17,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-
-
+        echo "\r\n-Start seeding\r\n";
 
         $this->call(RoleTableSeeder::class);
 
-        $this->command->info('Roles sample created successfully');
+        echo "\r\n-Roles sample created successfully\r\n";
 
 
         $this->call(PermissionTableSeeder::class);
 
-        $this->command->info('Permissions sample created successfully');
+        echo "\r\n-Permissions sample created successfully\r\n";
 
         $this->call(UserTableSeeder::class);
 
-        $this->command->info('Users sample created successfully');
+        echo "\r\n-Users sample created successfully\r\n";
 
 
         $this->call(ProjectTableSeeder::class);
 
-        $this->command->info('Projects sample created successfully');
+        echo "\r\n-Projects sample created successfully\r\n";
 
 
         $this->call(TaskTableSeeder::class);
 
-        $this->command->info('Tasks sample created successfully');
+        echo "\r\n-Tasks sample created successfully\r\n";
     }
 }
 

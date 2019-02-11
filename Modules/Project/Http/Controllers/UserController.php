@@ -8,7 +8,7 @@ use Modules\Project\Http\Services\UserService;
 
 use Modules\Project\Http\Requests\CreateTaskRequest;
 use Modules\Project\Http\Requests\UpdateTaskRequest;
-use Modules\Project\Http\Requests\DeleteTaslRquest;
+use Modules\Project\Http\Requests\DeleteUserRequest;
 
 class UserController extends Controller
 {
@@ -36,9 +36,9 @@ class UserController extends Controller
         return $this->service->store($request->all());
     }
 
-    public function destroy(DeleteTaslRquest $request)
+    public function destroy(DeleteUserRequest $request)
     {
-        $this->service->delete($request->all());
+        return $this->service->delete($request->all());
     }
 
     public function update(UpdateTaskRequest $request)
@@ -47,12 +47,3 @@ class UserController extends Controller
     }
 
 }
-
-
-        //dump($user->hasRole('developer')); //will return true, if user has role
-
-        //dump($user->roles);
-       
-        //dump($user->givePermissionsTo('create-tasks')); // will return permission, if not null
-        //dump($user->hasPermissionTo('create-tasks')); // will return true, if user has permission
-        //dump($user->can('edit-users'));

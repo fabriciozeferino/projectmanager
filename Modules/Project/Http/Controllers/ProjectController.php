@@ -27,12 +27,11 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index()
     {
-        $user = auth()->user();
+        $service = $this->service->index();
 
-
-        return view('project::project', compact('user'));
+        return view('project::project', compact('service'));
     }
 
     public function show($project_id)

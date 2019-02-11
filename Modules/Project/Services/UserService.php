@@ -21,25 +21,38 @@ class UserService extends AbstractService
 
     public function show($id)
     {
-        return $this->repository->show($id);
+        $repository = $this->repository->show($id);
+
+        //$repository->load('roles', 'permissions');
+
+
+        info(response()->json([
+            'data' => $repository->load('roles', 'permissions'),
+            'base' => $this->getAllPermissions(),
+            'base' => $this->getAllRoles(),
+        ]));
+
+
+
+
     }
 
-    public function store($data)
+    public function store($id)
     {
-        return $this->repository->create($data);
+        return $this->repository->create($id);
     }
 
-    public function update($data)
+    public function update($id)
     {
-        $project = $this->repository->show($data['id']);
+        $register = $this->repository->show($id['id']);
 
-        return $project->update($data);
+        return $register->update($id);
     }
 
     public function delete($data)
     {
-        $project = $this->repository->show($data);
+        $this->repository->deleteRow($data);
 
-        return $project->delete();
+        return $this->respondWithJson($data, 204);
     }
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
     <div class="card">
         <div class="card-header">Projects</div>
         <div class="card-body">
@@ -17,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($user->project as $project)
+                    @foreach ($service as $project)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>

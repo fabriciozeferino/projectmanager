@@ -3,7 +3,7 @@
 
 
 <div class="card">
-    <div class="card-header">Projects</div>
+    <div class="card-header">Users</div>
     <div class="card-body">
 
         <table class="table">
@@ -20,18 +20,30 @@
                 @foreach ($service as $user)
                 <tr>
                     <th scope="row">{{ $user->id }}</th>
+                    
                     <td>{{ $user->name }}</td>
+
                     <td>
                         @foreach ($user->permissions as $item)
-                        <span class="badge badge-danger">{{ $item->name}}</span>
+                        <small class=" {{-- {{ substr($item->slug, strpos($item->slug, "-") + 1) . "-color" }} --}}">•{{
+                            $item->name }}</small>
                         @endforeach
                     </td>
+
                     <td>
                         @foreach ($user->roles as $item)
-                        <span class="badge badge-success">{{ $item->name}}</span>
+                        <span class="badge {{ $item->slug . "-color" }}">{{ $item->name }}</span>
                         @endforeach
                     </td>
-                    <td><a href="{{ asset('/user/'. $user->id)}}">View</a></td>
+
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary readBtnModal" data-toggle="modal"
+                            data-target="#exampleModal" data-id="{{ $user->id }}" data-repository="user">Edit</button>
+
+                        <button type="button" class="btn btn-sm btn-danger deleteBtnModal" data-id="{{ $user->id }}"
+                            data-repository="user">Delete</button>
+
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -40,4 +52,17 @@
     </div>
 </div>
 
+@include('project::delete')
+
+@include('project::modal')
+
 @endsection
+
+
+
+{{--
+Route::get('user', 'UserController@index');
+Route::get('user/{user}', 'UserController@show');
+Route::post('user', 'UserController@store');
+Route::put('user/{user}', 'UserController@update');
+Route::delete('user/{user}', 'UserController@delete'); --}}

@@ -10,7 +10,7 @@ abstract class AbstractRepository extends Model //implements RepositoryInterface
 {
     public function index()
     {
-        return $this->all();
+        return $this->get();
     }
 
     // Create a new record in the database
@@ -35,6 +35,6 @@ abstract class AbstractRepository extends Model //implements RepositoryInterface
     // show the record with the given id
     public function show($id)
     {
-        return $this->findOrFail($id)->first();
+        return $this->findOrFail($id);
     }
 }

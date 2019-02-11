@@ -16,22 +16,108 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        //Admin
+        $admin_role = new RoleRepository();
+        $admin_role->slug = 'admin';
+        $admin_role->name = 'Admin';
+        $admin_role->save();
 
-        $dev_permission = PermissionRepository::where('slug', 'create-tasks')->first();
-        $manager_permission = PermissionRepository::where('slug', 'edit-users')->first();
+        //Users
+        $permission = PermissionRepository::where('slug', 'create-users')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-users')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-users')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-users')->first();
+        $admin_role->permissions()->attach($permission);
+
+        //Permissions
+        $permission = PermissionRepository::where('slug', 'create-permissions')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-permissions')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-permissions')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-permissions')->first();
+        $admin_role->permissions()->attach($permission);
+
+        //Roles
+        $permission = PermissionRepository::where('slug', 'create-roles')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-roles')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-roles')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-roles')->first();
+        $admin_role->permissions()->attach($permission);
+
+        //Projects
+        $permission = PermissionRepository::where('slug', 'create-projects')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-projects')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-projects')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-projects')->first();
+        $admin_role->permissions()->attach($permission);
+
+        //Tasks
+        $permission = PermissionRepository::where('slug', 'create-tasks')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-tasks')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-tasks')->first();
+        $admin_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-tasks')->first();
+        $admin_role->permissions()->attach($permission);
 
 
-        $dev_role = new RoleRepository();
-        $dev_role->slug = 'developer';
-        $dev_role->name = 'Developer';
-        $dev_role->save();
-        $dev_role->permissions()->attach($dev_permission);
 
-        $manager_role = new RoleRepository();
-        $manager_role->slug = 'admin';
-        $manager_role->name = 'Admin';
-        $manager_role->save();
-        $manager_role->permissions()->attach($manager_permission);
+
+        //User
+        $user_role = new RoleRepository();
+        $user_role->slug = 'user';
+        $user_role->name = 'User';
+        $user_role->save();
+
+        $permission = PermissionRepository::where('slug', 'create-projects')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-projects')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-projects')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'delete-projects')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'create-tasks')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'read-tasks')->first();
+        $user_role->permissions()->attach($permission);
+
+        $permission = PermissionRepository::where('slug', 'update-tasks')->first();
+        $user_role->permissions()->attach($permission);
+
+        $user_permission = PermissionRepository::where('slug', 'delete-tasks')->first();
+        $user_role->permissions()->attach($user_permission);
     }
 }

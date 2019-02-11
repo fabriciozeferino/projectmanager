@@ -40,14 +40,14 @@ class ProjectRepository extends AbstractRepository
     //     return $this->belongsToMany(\App\User::class, 'project_user', 'project_id', 'user_id');
     // }
 
-    public function index()
-    {
-        $id = 1;
-        return $this
-            ->where($this->table . '.user_id', $id)
-            ->orWhere('project_user.read', true)
-            ->leftJoin('project_user', $this->table . '.user_id', 'project_user.user_id')
-            ->paginate();
-    }
+    // public function index()
+    // {
+        
+    //     return $this
+    //         ->where($this->table . '.user_id', $id)
+    //         ->orWhere('project_user.read', true)
+    //         ->leftJoin('project_user', $this->table . '.user_id', 'project_user.user_id')
+    //         ->paginate();
+    // }
 
 }

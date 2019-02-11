@@ -19,7 +19,6 @@ class UserRepository extends AbstractRepository
     ];
 
 
-
     /**
      * The project that belong to the user.
      */
@@ -51,5 +50,4 @@ class UserRepository extends AbstractRepository
     {
         return $this->belongsToMany('Modules\Project\Http\Repositories\PermissionRepository', 'permission_user', 'user_id', 'permission_id');
     }
-
 }
