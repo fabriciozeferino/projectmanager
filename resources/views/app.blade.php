@@ -26,7 +26,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        {{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -90,20 +90,8 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
-        <main class="py-4 mt-5">
-            <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col">
-                        @yield('content')
-                    <div class="col">
-                        
-                </div>
-            </div>
-        </main>
-             
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
 

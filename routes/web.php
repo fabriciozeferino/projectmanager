@@ -11,9 +11,15 @@
 |
  */
 
-Route::get('/', function () {
-    return redirect('login');
-});
+
+// Route::get('/', function () {
+//     return redirect('login');
+// });
+
+Route::any('{all?}', function () {
+    return view('app');
+})->where('all', '^(?!api).*$');
+
 
 Auth::routes();
 

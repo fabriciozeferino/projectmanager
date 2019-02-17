@@ -18,7 +18,9 @@ class ProjectService extends AbstractService
 
     public function index()
     {
-        return $this->repository->index();
+        $service = $this->repository->index();
+
+        return response()->json($service);
     }
 
     public function show($id)

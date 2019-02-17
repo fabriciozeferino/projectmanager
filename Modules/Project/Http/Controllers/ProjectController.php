@@ -29,9 +29,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $service = $this->service->index();
+        return $this->service->index();
 
-        return view('project::project', compact('service'));
+        return view('project::project', compact('projects'));
     }
 
     public function show($project_id)
@@ -49,7 +49,7 @@ class ProjectController extends Controller
         return $this->service->update($request->all());
     }
 
-    public function delete(DeleteProjectRequest $request)
+    public function destroy(DeleteProjectRequest $request)
     {
         return $this->service->delete($request['id']);
     }

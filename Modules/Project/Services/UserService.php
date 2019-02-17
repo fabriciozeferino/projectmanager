@@ -3,6 +3,8 @@
 namespace Modules\Project\Http\Services;
 
 use Modules\Project\Http\Repositories\UserRepository;
+use Modules\Project\Http\Repositories\PermissionRepository;
+use Modules\Project\Http\Repositories\RoleRepository;
 
 
 class UserService extends AbstractService
@@ -23,13 +25,13 @@ class UserService extends AbstractService
     {
         $repository = $this->repository->show($id);
 
-        //$repository->load('roles', 'permissions');
+        // $repository->load('roles', 'permissions');
 
 
-        info(response()->json([
+        return (response()->json([
             'data' => $repository->load('roles', 'permissions'),
-            'base' => $this->getAllPermissions(),
-            'base' => $this->getAllRoles(),
+            'permissions' => PermissionRepository::all(),
+            'roles' => RoleRepository::all()
         ]));
 
 

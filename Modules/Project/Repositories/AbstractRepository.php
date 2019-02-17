@@ -10,7 +10,7 @@ abstract class AbstractRepository extends Model //implements RepositoryInterface
 {
     public function index()
     {
-        return $this->get();
+        return $this->paginate(5);
     }
 
     // Create a new record in the database
